@@ -1,3 +1,4 @@
+import 'package:dirty_code/src/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class DirtyScreenFour extends StatelessWidget {
@@ -5,87 +6,68 @@ class DirtyScreenFour extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Dirty Screen #4"),
-      ),
+      appBar: MyAppBar(id: 4),
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
           children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.blueAccent,
+            SFourEntry(
+              label_text: "Home",
+              color: Colors.blueAccent,
+              icon: Icons.home
               ),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.home, color: Colors.white),
-                  SizedBox(width: 8),
-                  Text(
-                    'Home',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ],
+            SFourEntry(
+              label_text: "Work",
+              color: Colors.greenAccent,
+              icon: Icons.work
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.greenAccent,
+            SFourEntry(
+              label_text: "School",
+              color: Colors.orangeAccent,
+              icon: Icons.school
               ),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.work, color: Colors.white),
-                  SizedBox(width: 8),
-                  Text(
-                    'Work',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ],
+            SFourEntry(
+              label_text: "Bike",
+              color: Colors.purpleAccent,
+              icon: Icons.directions_bike
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.orangeAccent,
-              ),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.school, color: Colors.white),
-                  SizedBox(width: 8),
-                  Text(
-                    'School',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.purpleAccent,
-              ),
-              margin: const EdgeInsets.all(4),
-              padding: const EdgeInsets.all(16.0),
-              child: const Row(
-                children: [
-                  Icon(Icons.directions_bike, color: Colors.white),
-                  SizedBox(width: 8),
-                  Text(
-                    'Bike',
-                    style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SFourEntry extends StatelessWidget {
+  SFourEntry({
+    super.key,
+    required this.label_text,
+    required this.color,
+    required this.icon
+  });
+
+  String label_text;
+  Color color;
+  IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: color,
+      ),
+      margin: const EdgeInsets.all(4),
+      padding: const EdgeInsets.all(16.0),
+      child: Row(
+        children: [
+          Icon(icon, color: Colors.white),
+          SizedBox(width: 8),
+          Text(
+            label_text,
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
+        ],
       ),
     );
   }
